@@ -47,7 +47,7 @@ const keplrChainDataBoilerplate: KeplrChainDefinition = {
 };
 
 function App() {
-  const [hasKeplr, setHasKeplr] = useState(Boolean(window.keplr));
+  const [hasKeplr] = useState(Boolean(window.keplr));
   const [chainId, setChainId] = useState("");
   const [chainName, setChainName] = useState("");
   const [rpcEndpoint, setRpcEndpoint] = useState("");

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Input from "./Input";
 import { KeplrChainDefinition } from "./index";
 import "./App.css";
@@ -47,7 +47,7 @@ const keplrChainDataBoilerplate: KeplrChainDefinition = {
 };
 
 function App() {
-  const [hasKeplr] = useState(Boolean(window.keplr));
+  const [hasKeplr, setHasKeplr] = useState(Boolean(window.keplr));
   const [chainId, setChainId] = useState("");
   const [chainName, setChainName] = useState("");
   const [rpcEndpoint, setRpcEndpoint] = useState("");
@@ -55,6 +55,10 @@ function App() {
   const [addressPrefix, setAddressPrefix] = useState("");
   const [coinDenom, setCoinDenom] = useState("");
   const [coinMinDenom, setCoinMinDenom] = useState("");
+
+  useEffect(() => {
+    setHasKeplr(Boolean(window.keplr));
+  }, []);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const key = e.target.name;

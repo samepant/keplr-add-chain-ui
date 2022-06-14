@@ -47,7 +47,6 @@ const keplrChainDataBoilerplate: KeplrChainDefinition = {
 };
 
 function App() {
-  const [hasKeplr, setHasKeplr] = useState(Boolean(window.keplr));
   const [chainId, setChainId] = useState("");
   const [chainName, setChainName] = useState("");
   const [rpcEndpoint, setRpcEndpoint] = useState("");
@@ -55,10 +54,6 @@ function App() {
   const [addressPrefix, setAddressPrefix] = useState("");
   const [coinDenom, setCoinDenom] = useState("");
   const [coinMinDenom, setCoinMinDenom] = useState("");
-
-  useEffect(() => {
-    setHasKeplr(Boolean(window.keplr));
-  }, []);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const key = e.target.name;
@@ -92,6 +87,10 @@ function App() {
   };
 
   const addChainToKeplr = async () => {
+    if (!window.keplr) {
+      alert("The Keplr extension must be installed");
+      return;
+    }
     const chainData = keplrChainDataBoilerplate;
 
     chainData.chainId = chainId;
@@ -121,76 +120,70 @@ function App() {
 
   return (
     <div>
-      {hasKeplr ? (
-        <div className="w-8/12 flex flex-col items-center m-auto mt-10 mb-10">
-          <h1 className="text-3xl font-bold underline ">
-            Add a chain to your Keplr wallet 😮
-          </h1>
-          <form>
-            <Input
-              type="text"
-              name="chainId"
-              label="Chain Id"
-              value={chainId}
-              onChange={onChange}
-            />
-            <Input
-              type="text"
-              name="chainName"
-              label="Chain Name"
-              value={chainName}
-              onChange={onChange}
-            />
-            <Input
-              type="text"
-              name="rpcEndpoint"
-              label="RPC Endpoint"
-              value={rpcEndpoint}
-              onChange={onChange}
-              helperText="This should be something like 'http://127.0.0.1:26657'"
-            />
-            <Input
-              type="text"
-              name="restEndpoint"
-              label="Rest Endpoint"
-              value={restEndpoint}
-              onChange={onChange}
-              helperText="This should be something like 'http://127.0.0.1:1317'"
-            />
-            <Input
-              type="text"
-              name="addressPrefix"
-              label="Address Prefix"
-              value={addressPrefix}
-              onChange={onChange}
-            />
-            <Input
-              type="text"
-              name="coinDenom"
-              label="Coin Denom"
-              value={coinDenom}
-              onChange={onChange}
-            />
-            <Input
-              type="text"
-              name="coinMinDenom"
-              label="Coin Minimum Denomination"
-              value={coinMinDenom}
-              onChange={onChange}
-            />
-            <button
-              onClick={addChainToKeplr}
-              className="w-full bg-lime-500 p-4 font-bold "
-            >
-              Add to Keplr
-            </button>
-          </form>
-        </div>
-      ) : (
-        <div>
-          <h1>Sorry, you need to have Keplr installed to use this app.</h1>
-        </div>
-      )}
+      <div className="w-8/12 flex flex-col items-center m-auto mt-10 mb-10">
+        <h1 className="text-3xl font-bold underline ">
+          Add a chain to your Keplr wallet 😮
+        </h1>
+        <form>
+          <Input
+            type="text"
+            name="chainId"
+            label="Chain Id"
+            value={chainId}
+            onChange={onChange}
+          />
+          <Input
+            type="text"
+            name="chainName"
+            label="Chain Name"
+            value={chainName}
+            onChange={onChange}
+          />
+          <Input
+            type="text"
+            name="rpcEndpoint"
+            label="RPC Endpoint"
+            value={rpcEndpoint}
+            onChange={onChange}
+            helperText="This should be something like 'http://127.0.0.1:26657'"
+          />
+          <Input
+            type="text"
+            name="restEndpoint"
+            label="Rest Endpoint"
+            value={restEndpoint}
+            onChange={onChange}
+            helperText="This should be something like 'http://127.0.0.1:1317'"
+          />
+          <Input
+            type="text"
+            name="addressPrefix"
+            label="Address Prefix"
+            value={addressPrefix}
+            onChange={onChange}
+          />
+          <Input
+            type="text"
+            name="coinDenom"
+            label="Coin Denom"
+            value={coinDenom}
+            onChange={onChange}
+          />
+          <Input
+            type="text"
+            name="coinMinDenom"
+            label="Coin Minimum Denomination"
+            value={coinMinDenom}
+            onChange={onChange}
+          />
+          <button
+            onClick={addChainToKeplr}
+            className="w-full bg-lime-500 p-4 font-bold "
+          >
+            Add to Keplr
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

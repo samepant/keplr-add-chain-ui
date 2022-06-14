@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Input from "./Input";
 import { KeplrChainDefinition } from "./index";
 import "./App.css";

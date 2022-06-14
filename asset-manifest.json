@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/keplr-add-chain-ui/static/css/main.75814843.css",
-    "main.js": "/keplr-add-chain-ui/static/js/main.b5b5069d.js",
+    "main.js": "/keplr-add-chain-ui/static/js/main.f7a24331.js",
     "static/js/787.2c76adfe.chunk.js": "/keplr-add-chain-ui/static/js/787.2c76adfe.chunk.js",
     "index.html": "/keplr-add-chain-ui/index.html",
     "main.75814843.css.map": "/keplr-add-chain-ui/static/css/main.75814843.css.map",
-    "main.b5b5069d.js.map": "/keplr-add-chain-ui/static/js/main.b5b5069d.js.map",
+    "main.f7a24331.js.map": "/keplr-add-chain-ui/static/js/main.f7a24331.js.map",
     "787.2c76adfe.chunk.js.map": "/keplr-add-chain-ui/static/js/787.2c76adfe.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.75814843.css",
-    "static/js/main.b5b5069d.js"
+    "static/js/main.f7a24331.js"
   ]
 }
